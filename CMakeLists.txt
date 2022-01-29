@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.16)
 # and the targets that do not specify a standard.
 # If not set, the latest supported standard for your compiler is used
 # You can later set fine-grained standards for each target using `target_compile_features`
-# set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 17)
 
 # Add project_options v0.13.0
 # https://github.com/cpp-best-practices/project_options
@@ -25,16 +25,16 @@ project(myproject LANGUAGES CXX)
 # uncomment the options to enable them:
 project_options(
       ENABLE_CACHE
-      # WARNINGS_AS_ERRORS
+      WARNINGS_AS_ERRORS
       ENABLE_CPPCHECK
       ENABLE_CLANG_TIDY
-      ENABLE_CONAN
+      # ENABLE_CONAN
       ENABLE_COVERAGE
       # ENABLE_IPO
       # ENABLE_INCLUDE_WHAT_YOU_USE
       # ENABLE_PCH
       # PCH_HEADERS
-      # ENABLE_DOXYGEN
+      ENABLE_DOXYGEN
       # ENABLE_USER_LINKER
       # ENABLE_BUILD_WITH_TIME_TRACE
       # ENABLE_UNITY
@@ -51,7 +51,7 @@ target_compile_features(project_options INTERFACE cxx_std_17)
 add_subdirectory(src)
 
 # Adding the tests:
-option(ENABLE_TESTING "Enable the tests" ON)
+option(ENABLE_TESTING "Enable the tests" OFF)
 if(ENABLE_TESTING)
   enable_testing()
   message("Building Tests. Be sure to check out test/constexpr_tests for constexpr
